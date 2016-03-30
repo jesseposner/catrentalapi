@@ -1,0 +1,21 @@
+<h2>Cat <%= @cats.id %></h2>
+<table border="1" cellpadding="5" cellspacing="5">
+ <tr>
+   <th>Name</th>
+   <th>Age</th>
+   <th>Birth Date</th>
+   <th>Color</th>
+   <th>Sex</th>
+   <th>Fond Memories</th>
+ </tr>
+ <tr>
+   <td><%= @cats.name %></td>
+   <td><%= @cats.age %></td>
+   <td><%= @cats.birth_date %></td>
+   <td><%= @cats.color %></td>
+   <td><%= @cats.sex %></td>
+   <td><%= @cats.description %></td>
+ </tr>
+</table>
+<p>
+<%= link_to "Create new cat!", new_cat_url %>

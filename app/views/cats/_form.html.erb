@@ -1,0 +1,56 @@
+<h2>Cat Form</h2>
+<% action_url = (action == :new) ? cats_url : cat_url(cats) %>
+
+<form action="<%= action_url %>" method="post">
+  <% if action == :edit %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <label for="cat_name">First name</label>
+
+  <input name="cat[name]" id="cat_name" type="text"
+  <% unless cats.nil? %> value=<%=cats.name%> <%end%> > <p>
+
+
+  <label>Sex</label>
+  <div>
+
+    <input name="cat[sex]" id="cat_sex_m" type="radio" value="M"
+    <% unless cats.nil? %>
+    <%="checked" if "M" == cats.sex%>> <%end%>
+    <label for="cat_sex_m">Male</label>
+    <input name="cat[sex]" id="cat_sex_f" type="radio" value="F"
+    <% unless cats.nil? %>
+    <%="checked" if "F" == cats.sex%>> <%end%>
+    <label for="cat_sex_f">Female</label>
+  </div>
+  <br>
+
+  <label for="cat_description">Fond Memories</label>
+  <textarea name="cat[description]" id="cat_description">
+    <% unless cats.nil? %> <%=cats.description%> <%end%>
+  </textarea><p>
+
+  <label for="cat_color">Color</label>
+
+  <select name="cat[color]">
+
+    <% Cat::COLORS.each do | color | %>
+      <option value= "<%=color%>"
+        <% unless cats.nil? %>
+        <%="selected" if color == cats.color%><%end%>>
+        <%=color.capitalize%> </option>
+    <%end%>
+
+  </select>
+  <br><p>
+
+  <label for="cat_birth_date">Birth date</label>
+
+  <input name="cat[birth_date]" id="cat_birth_date" type="date"
+    <% unless cats.nil? %> value= <%=cats.birth_date%> <%end%>>
+  <p>
+  <input type="submit" value="Update my cat!">
+
+
+</form>
